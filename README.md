@@ -1,8 +1,8 @@
 # The A Team
 
 The A Team is a provider-agnostic orchestration project built with Python and
-LangGraph. Version 0.1 proves the core workflow before any vendor or tool
-integrations are added:
+LangGraph. The core workflow proves orchestration, review routing, and retry
+handling while allowing model providers to be added behind a shared contract.
 
 ```text
 User request -> Orchestrator -> Engineer -> Reviewer
@@ -50,10 +50,20 @@ src/the_a_team/
   state.py      Shared graph state and initialization
 ```
 
+## OpenAI provider
+
+The optional `OpenAIProvider` uses the Responses API and Pydantic structured
+outputs. Each agent still depends on the neutral `ReasoningProvider` contract,
+so the graph and agent logic do not depend directly on OpenAI.
+
+The provider is covered with fake-client unit tests. Running the test suite
+does not make network requests or consume API credits. Runtime configuration
+and a live workflow entry point will be added separately.
+
 ## Scope
 
-Version 0.1 intentionally excludes research, Notion, NotebookLM, Gemini, file
-editing tools, persistence, and live model calls. Those capabilities can be
+The core workflow intentionally excludes research, Notion, NotebookLM, Gemini,
+file-editing tools, persistence, and automatic live-model execution. Those capabilities can be
 added behind tool and provider interfaces after the orchestration loop is
 proven.
 

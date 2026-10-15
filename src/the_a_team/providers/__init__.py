@@ -7,6 +7,7 @@ from the_a_team.providers.base import (
     ReasoningResponse,
     UnconfiguredProvider,
 )
+from the_a_team.providers.openai import OpenAIProvider
 
 __all__ = [
     "ProviderError",
@@ -14,4 +15,5 @@ __all__ = [
     "ReasoningRequest",
     "ReasoningResponse",
     "UnconfiguredProvider",
+    "OpenAIProvider",
 ]
