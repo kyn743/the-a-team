@@ -66,4 +66,3 @@ def create_initial_state(
         "status": WorkflowStatus.PENDING,
         "metadata": {},
     }
-

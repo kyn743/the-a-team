@@ -57,4 +57,3 @@ class UnconfiguredProvider:
             f"No implementation is configured for provider '{self.name}' "
             f"used by the {request.role.value} agent."
         )
-

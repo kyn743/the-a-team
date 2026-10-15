@@ -72,4 +72,3 @@ def run_workflow(
     recursion_limit = max(25, (2 * max_retries) + 5)
     result = graph.invoke(initial_state, {"recursion_limit": recursion_limit})
     return cast(ATeamState, result)
-

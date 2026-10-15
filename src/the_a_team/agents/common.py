@@ -43,4 +43,3 @@ def log_agent_start(state: ATeamState, role: AgentRole, provider_name: str) -> N
         provider_name,
         state.get("task_id", "unknown"),
     )
-

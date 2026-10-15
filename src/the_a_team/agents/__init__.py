@@ -5,4 +5,3 @@ from the_a_team.agents.orchestrator import OrchestratorAgent
 from the_a_team.agents.reviewer import ReviewerAgent
 
 __all__ = ["EngineerAgent", "OrchestratorAgent", "ReviewerAgent"]
-

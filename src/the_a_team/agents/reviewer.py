@@ -26,7 +26,9 @@ class ReviewerAgent:
             response = self.provider.generate(
                 ReasoningRequest(
                     role=role,
-                    objective="Evaluate the artifact against every requirement and return PASS or REVISE.",
+                    objective=(
+                        "Evaluate the artifact against every requirement and return PASS or REVISE."
+                    ),
                     context={
                         "user_request": state["user_request"],
                         "requirements": state["requirements"],
@@ -66,4 +68,3 @@ class ReviewerAgent:
             }
         except Exception as error:
             return failure_update(state, role, error)
-

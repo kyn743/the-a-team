@@ -29,8 +29,7 @@ class EngineerAgent:
                         "requirements": state["requirements"],
                         "constraints": state.get("constraints", []),
                         "execution_plan": [
-                            step.model_dump(mode="json")
-                            for step in state.get("execution_plan", [])
+                            step.model_dump(mode="json") for step in state.get("execution_plan", [])
                         ],
                         "previous_artifact": (
                             state["artifact"].model_dump(mode="json")
@@ -53,4 +52,3 @@ class EngineerAgent:
             }
         except Exception as error:
             return failure_update(state, role, error)
-

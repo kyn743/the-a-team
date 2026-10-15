@@ -103,4 +103,3 @@ class WorkflowInput(StrictModel):
 
     user_request: str = Field(min_length=1)
     max_retries: int = Field(default=2, ge=0, le=20)
-

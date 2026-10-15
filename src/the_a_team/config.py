@@ -33,4 +33,3 @@ class Settings(BaseSettings):
             AgentRole.REVIEWER: self.reviewer_provider,
         }
         return names[role]
-
