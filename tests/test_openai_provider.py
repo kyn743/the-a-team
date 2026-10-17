@@ -165,3 +165,21 @@ def test_engineer_uses_strict_output_compatible_with_artifact() -> None:
     schema = responses.output_model.model_json_schema()
     assert schema["additionalProperties"] is False
     assert "metadata" not in schema["properties"]
+
+
+def test_constructor_passes_api_key_to_openai_client(monkeypatch) -> None:
+    captured: dict[str, str | None] = {}
+
+    class FakeOpenAI:
+        def __init__(self, *, api_key: str | None = None) -> None:
+            captured["api_key"] = api_key
+
+    monkeypatch.setattr("openai.OpenAI", FakeOpenAI)
+
+    provider = OpenAIProvider(
+        model="test-model",
+        api_key="test-secret-key",
+    )
+
+    assert provider.name == "openai"
+    assert captured["api_key"] == "test-secret-key"

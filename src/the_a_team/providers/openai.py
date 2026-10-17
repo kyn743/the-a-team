@@ -52,7 +52,13 @@ _SYSTEM_PROMPTS: dict[AgentRole, str] = {
 class OpenAIProvider:
     """Generate role-specific structured output with the OpenAI Responses API."""
 
-    def __init__(self, *, model: str, client: Any | None = None) -> None:
+    def __init__(
+        self,
+        *,
+        model: str,
+        api_key: str | None = None,
+        client: Any | None = None,
+    ) -> None:
         if not model.strip():
             raise ValueError("OpenAI model name cannot be empty.")
 
@@ -63,7 +69,7 @@ class OpenAIProvider:
                 raise ProviderError(
                     "The OpenAI SDK is not installed. Install the project dependencies."
                 ) from error
-            client = OpenAI()
+            client = OpenAI(api_key=api_key)
 
         self._model = model
         self._client = client
