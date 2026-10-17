@@ -2,7 +2,7 @@
 
 from typing import Literal
 
-from pydantic import Field
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from the_a_team.schemas import AgentRole
@@ -20,6 +20,11 @@ class Settings(BaseSettings):
 
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
     max_retries: int = Field(default=2, ge=0, le=20)
+    openai_model: str = Field(default="gpt-6-astra", min_length=1)
+    openai_api_key: SecretStr | None = Field(
+        default=None,
+        validation_alias="OPENAI_API_KEY",
+    )
     orchestrator_provider: str = "unconfigured"
     engineer_provider: str = "unconfigured"
     reviewer_provider: str = "unconfigured"
