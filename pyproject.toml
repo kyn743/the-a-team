@@ -15,6 +15,9 @@ dependencies = [
     "pydantic-settings>=2.16,<3",
 ]
 
+[project.scripts]
+the-a-team = "the_a_team.cli:main"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=8.4,<10",
